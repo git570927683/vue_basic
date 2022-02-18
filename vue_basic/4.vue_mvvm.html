@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!--  
+        MVVM的理解：
+        1. M: 模型（Model）:对应data中的数据
+        2. V: 视图（View）：对应模板代码
+        3. VM: 视图模型（ViewModel）：Vue实例对象
+
+        扩展说明：
+            1. el的两种写法：
+                1. new Vue({}) 直接赋值el属性
+                2. 通过Vue对象 vm.$mount('#root') 挂载容器
+            2. data的两种写法
+                1. 对象式：非组件化编码时可以写对象，也可写函数
+                2. 函数式：组件化编码必须使用函数式data
+                注意：
+                    1.若使用函数式写法 Vue 会自动调用函数拿到函数的返回值
+                    2.Vue中不要写箭头函数，会改变this的指向
+
+    -->
+    <div id="root">
+        {{msg}}
+    </div>
+    <script>
+        // el 第一种写法（常用）
+
+        // new Vue({
+        //     el: '#root',
+        //     data: {
+        //         msg: '写法一'
+        //     }
+        // });
+
+        // el 第二种写法（不常用）
+        // const vm = new Vue({
+        //     data: {
+        //         msg:'测试二'
+        //     }
+        // });
+
+        // vm.$mount('#root');
+
+
+        //data的两种写法
+        // 第一种写法,data是一个对象
+        // 第二种写法,data是一个函数 返回一个数据对象
+
+        new Vue({
+            el:'#root',
+            data(){ //注意尽可能避免箭头函数，否则this的指向会指向window 而不是Vue示例
+                return {
+                    msg:'data函数式写法'
+                };
+            }
+        });
+
+    </script>
+</body>
+</html>

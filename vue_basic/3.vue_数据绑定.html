@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!--
+        数据绑定：
+        1.单向数据绑定 v-bind 数据只能从data 流向页面
+        2.双向数据绑定 v-model:value ----  可以简写为 v-model
+        数据不仅能从data流向页面，也能从页面流向data
+        备注：
+        1: 双向数据绑定用于表单类的元素
+        2.v-model:value 可以简写为v-model, 因为v-model默认收集value的值
+        用于有value值的标签 -- 输入类的DOM
+    -->
+    <div id="root">
+        <input type="text" :value="msg" />
+        <br>
+        <br>
+        <input type="text" v-model="msg">
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data:{
+                msg:'http://www.baidu.com'
+            }
+        });
+    </script>
+</body>
+</html>

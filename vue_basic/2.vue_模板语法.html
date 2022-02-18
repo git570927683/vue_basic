@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板语法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!--
+        模板语法
+        1.插值语法 标签体中插入值
+            功能：用于解析标签体内容
+            写法：{{}}, 可以自动读取到data中的属性
+        2.指令语法
+            功能：用于解析标签 包括标签属性、标签内容、绑定事件
+            举例：v-bind:href  v-bind 可以简写为： 或者:bind
+    -->
+    <!--准备一个容器-->
+    <div id="root">
+        <h1>{{msg}}</h1>
+        <h1>{{msg.toUpperCase()}}</h1>
+
+        <hr>
+
+        <!-- 指令语法 -->
+        <a :href="url">百度</a>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                msg: 'atguigu',
+                url: 'http://www.baidu.com'
+            }
+        });
+
+    </script>
+</body>
+</html>
