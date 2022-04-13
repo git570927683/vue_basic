@@ -8,6 +8,18 @@
     <script type="text/javascript" src="../js/vue.js"></script>
 </head>
 <body>
+    <!-- 
+        关于Vue中的数据代理
+            1.什么是数据代理
+                1）.配置对象data中的数据，会被收集到vm._data中，然后通过，Object.defineProperty让vm拥有data中的所有属性
+                2）.当访问vm的属性时，返回的是_data中同名的属性值
+                3）.当修改vm的属性时，修改的是_data中同名的属性值
+            2.为什么要数据代理
+                为了更加方便的读取和修改_data中的数据，不做数据代理  访问数据就要用_data.propertyName
+            3.扩展思考？ 为什么将data收集到_data 然后又代理出去
+                缩小Vue的监视范围，数据改动只需要监测_data中的数据
+
+     -->
     <div id="root">
         <h1>{{h1}}</h1>
         <h1>{{h2}}</h1>

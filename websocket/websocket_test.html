@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>websocket通讯</title>
+</head>
+<script src="../js/vue.js"></script>
+<body>
+    <div id="test">
+        <button @click ="initWebSocket">开启socket</button>
+        <br> <br>
+
+        <button @click="websocketclose">关闭socket</button>
+    </div>
+</body>
+<template>
+    
+</template>
+
+<script type="module">
+    new Vue ({
+        el: '#test',
+        data() {
+            return {
+                websock: null,
+            }
+        },
+        methods: {
+            initWebSocket() { //初始化weosocket
+                const wsuri = "ws://127.0.0.1:8090/websocket/1";
+                console.log(wsuri);
+                this.websock = new WebSocket(wsuri);
+                this.websock.onmessage = this.websocketonmessage;
+                this.websock.onopen = this.websocketonopen;
+                this.websock.onerror = this.websocketonerror;
+                this.websock.onclose = this.websocketclose;
+            },
+            websocketonopen() { //连接建立之后执行send方法发送数据
+                // let actions = { "test": "12345" };
+                // console.log(123);
+                // this.websocketsend(JSON.stringify(actions));
+            },
+            websocketonerror() {//连接建立失败重连
+                this.initWebSocket();
+            },
+            websocketonmessage(e) { //数据接收
+                console.log(e.data);
+                // const redata = JSON.parse(e);
+            },
+            websocketsend(Data) {//数据发送
+                this.websock.send(Data);
+            },
+            websocketclose(e) {  //关闭
+                console.log('断开连接', e.data);
+            },
+        }
+    });
+</script>
+
+</html>

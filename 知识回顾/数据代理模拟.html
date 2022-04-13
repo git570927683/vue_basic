@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>数据代理模拟</title>
-    <script type="text/javascript" src="../js/vue.js"></script>
+    <!-- <script type="text/javascript" src="../js/vue.js"></script> -->
 </head>
 <body>
     <div id="root">
@@ -15,15 +15,24 @@
 </body>
 <script>
     //复习 Object.defineProperty 用于给一个对象追加属性
+    // 如下写法会形成递归死循环
+    let person = {};
+    // Object.defineProperty(person,'age',{
+    //     set(value){
+    //         console.log(this.age);
+    //         this.age = value;
+    //     },
+    //     get(){
+    //         console.log('get');
+    //         return 100;
+    //     }
+    // });
+    
+    // person.age = 1;
 
-    let person = {name: '张三'};
-    person.defineProperty(person,'age',{
-        set(newValue){
-        },
-        get(){
-            return age;
-        }
-    });
+
+    // 模拟数据代理
+    let person = {msg:123};
 
 </script>
 

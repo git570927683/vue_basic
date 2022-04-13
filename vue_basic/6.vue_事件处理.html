@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件处理</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h2>欢迎学习{{subject}}</h2>
+        <!-- 绑定事件---标准方式 -->
+        <button v-on:click="print1">点我打印信息1</button> <br><br>
+        <!-- 绑定事件---简写方式 -->
+        <button @click="print2">点我打印信息2</button> <br><br>
+        <!-- 绑定事件---传参数 -->
+        <button @click="print3(666,$event)">点我打印信息3</button> <br><br>
+        <!-- 绑定事件---组织默认行为 -->
+        <button @click="print3(666,$event)">点我打印信息3</button> <br><br>
+    </div>
+</body>
+<script>
+    new Vue({
+       el: '#root',
+       data: {
+        subject: '事件处理'
+       },
+       methods: {
+           print1: function (event) {
+               console.log("1", event.target.innerText);
+           },
+           print2: function (event) {
+               console.log("2", event.target.innerText);
+           },
+           print3: function (number, event) {
+               console.log(number, event);
+           }
+       },
+    });
+
+</script>
+</html>
